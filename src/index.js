@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Login from './login';
+import Home from './home';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+// import {HashRouter as Router,Switch,Route} from 'react-router-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <Router>
+        <Switch>
+            <Route exact path={'/'} component={Login}/> {/* exact如果为 true，则只有在 path 完全匹配 location.pathname 时才匹配 */}
+            <Route component={Home}/>  {/* 路由下有子路又那么就不用path */}
+        </Switch>
+    </Router>
+    , document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
